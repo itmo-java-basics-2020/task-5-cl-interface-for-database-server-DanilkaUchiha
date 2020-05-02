@@ -25,7 +25,7 @@ public class DatabaseImplementation implements Database {
         try {
             Files.createDirectories(Paths.get("./Database/" + name + "/" + tableName));
         } catch (IOException e) {
-            throw new DatabaseException("");
+            throw new DatabaseException("Table already exists");
         }
     }
 
@@ -42,7 +42,7 @@ public class DatabaseImplementation implements Database {
             writer.print(objectValue);
             writer.close();
         } catch (FileNotFoundException e) {
-            throw new DatabaseException(e.getMessage());
+            throw new DatabaseException("Table already exists");
         }
     }
 
@@ -51,7 +51,7 @@ public class DatabaseImplementation implements Database {
         try {
             return new String(Files.readAllBytes(Paths.get("./Database/" + name + "/" + tableName + "/" + objectKey)));
         } catch (IOException e) {
-            throw new DatabaseException("");
+            throw new DatabaseException("Table already exists");
         }
     }
 }
