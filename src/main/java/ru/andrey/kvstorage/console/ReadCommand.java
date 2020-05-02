@@ -23,7 +23,7 @@ public class ReadCommand implements DatabaseCommand {
             if (env.getDatabase(database).isEmpty()) throw new DatabaseException("");
             return DatabaseResult.succsess(env.getDatabase(database).get().read(tableName, key));
         } catch (DatabaseException ex) {
-            return DatabaseResult.error("");
+            return DatabaseResult.error(ex.getMessage());
         }
     }
 }

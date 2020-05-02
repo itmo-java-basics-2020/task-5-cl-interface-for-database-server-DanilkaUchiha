@@ -25,7 +25,7 @@ public class UpdateCommand implements DatabaseCommand {
             env.getDatabase(database).get().write(tableName, key, value);
             return DatabaseResult.succsess("");
         } catch (DatabaseException ex) {
-            return DatabaseResult.error("");
+            return DatabaseResult.error(ex.getMessage());
         }
     }
 }

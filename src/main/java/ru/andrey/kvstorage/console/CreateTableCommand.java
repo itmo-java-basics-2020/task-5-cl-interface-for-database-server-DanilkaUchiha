@@ -25,7 +25,7 @@ public class CreateTableCommand implements DatabaseCommand {
             env.getDatabase(database).get().createTableIfNotExists(tableName);
             return DatabaseResult.succsess("");
         } catch (DatabaseException e) {
-            return DatabaseResult.error("");
+            return DatabaseResult.error(e.getMessage());
         }
     }
 }
